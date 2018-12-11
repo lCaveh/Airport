@@ -1,40 +1,21 @@
 @{
   Layout = "_Layout";
 }
-
 <div class="container">
-<form action='/flights' method='post'>
-
-  <label for='flightNumber'>Flight Number: </label>
-  <input id='flightNumber' name='flightNumber' type='text'> <br>
-  <label for='departureTime'>Departure Time: </label>
-  <input id='departureTime' name='departureTime' type='datetime-local'> <br>
-  <label for='arrivalTime'>Arrival Time: </label>
-  <input id='arrivalTime' name='arrivalTime' type='datetime-local'> <br>
-  <label for='airline'>Airline: </label>
-  <input id='airline' name='airline' type='text'> <br>
-  <label for='status'>Status: </label>
-  <input id='status' name='status' type='text'>
+  <h2>Edit flight number @Model.GetFlightNumber()<h2>
+  <form action='/flights/@Model.GetId()' method='post'>
+    <label for='flightNumber'>Flight Number: </label>
+    <input id='flightNumber' name='flightNumber' type='text' value="@Model.GetFlightNumber()"> <br>
+    <label for='departureTime'>Departure Time: </label>
+    <input id='departureTime' name='departureTime' type='datetime-local' value="@Model.GetDepartureTime()"> <br>
+    <label for='arrivalTime'>Arrival Time: </label>
+    <input id='arrivalTime' name='arrivalTime' type='datetime-local' value="@Model.GetArrivalTime()"> <br>
+    <label for='airline'>Airline: </label>
+    <input id='airline' name='airline' type='text' value="@Model.GetAirline()"> <br>
+    <label for='status'>Status: </label>
+    <input id='status' name='status' type='text' value="@Model.GetStatus()">
     <br>
-  <label for="departureCity">Departure City</label>
-  <select id="departureCity" name="departureCity">
-  @foreach (var city in Model)
-  {
-    <option value=@city.GetId()>@city.GetName()</option>
-  }
-  
-
-</select>
- <br>
-<label for="arrivalCity">Arrival City</label>
-  <select id="arrivalCity" name="arrivalCity">
-  @foreach (var city in Model)
-  {
-    <option value=@city.GetId()>@city.GetName()</option>
-  }
-  
-
-</select>
- <br>
-  <button type='submit'>Add Flight</button>
+    <br>
+    <button type='submit'>Edit Flight</button>
+  </form>
 </div>

@@ -33,14 +33,11 @@ namespace Airline.Controllers
         }
 
         [HttpGet("/flights/{flightId}")]
-        public ActionResult Show(int cityId, int flightId)
+        public ActionResult Show(int flightId)
         {
             Flight flight = Flight.Find(flightId);
-            Dictionary<string, object> model = new Dictionary<string, object>();
-            City city = City.Find(cityId);
-            model.Add("flight", flight);
-            model.Add("city", city);
-            return View(model);
+
+            return View(flight);
         }
 
         [HttpPost("/flights/{flightId}/delete")]
@@ -52,35 +49,42 @@ namespace Airline.Controllers
         }
 
         [HttpGet("/flights/{flightId}/edit")]
-        public ActionResult Update(int flightId)
+        public ActionResult Edit(int flightId)
         {
             Flight flight = Flight.Find(flightId);
 
             return View(flight);
         }
-
-        [HttpGet("/cities/{cityId}/flights/{flightId}/edit")]
-        public ActionResult Edit(int cityId, int flightId)
-        {
-            Dictionary<string, object> model = new Dictionary<string, object>();
-            City city = City.Find(cityId);
-            model.Add("city", city);
-            Flight flight = Flight.Find(flightId);
-            model.Add("flight", flight);
-            return View(model);
-        }
-
-        [HttpPost("/cities/{cityId}/flights/{flightId}")]
-        public ActionResult Update(int cityId, int flightId, string flightNumber, DateTime departureTime, DateTime arrivalTime, string airline, string status)
+        [HttpPost("/flights/{flightId}")]
+        public ActionResult Edit(string flightNumber, DateTime departureTime, DateTime arrivalTime, string airline, string status, int flightId)
         {
             Flight flight = Flight.Find(flightId);
             flight.Edit(flightNumber, departureTime, arrivalTime, airline, status);
-            Dictionary<string, object> model = new Dictionary<string, object>();
-            City city = City.Find(cityId);
-            model.Add("city", city);
-            model.Add("flight", flight);
-            return View("Show", model);
+
+            return View("Show",flight);
         }
+        // [HttpGet("/cities/{cityId}/flights/{flightId}/edit")]
+        // public ActionResult Edit(int cityId, int flightId)
+        // {
+        //     Dictionary<string, object> model = new Dictionary<string, object>();
+        //     City city = City.Find(cityId);
+        //     model.Add("city", city);
+        //     Flight flight = Flight.Find(flightId);
+        //     model.Add("flight", flight);
+        //     return View(model);
+        // }
+        //
+        // [HttpPost("/cities/{cityId}/flights/{flightId}")]
+        // public ActionResult Update(int cityId, int flightId, string flightNumber, DateTime departureTime, DateTime arrivalTime, string airline, string status)
+        // {
+        //     Flight flight = Flight.Find(flightId);
+        //     flight.Edit(flightNumber, departureTime, arrivalTime, airline, status);
+        //     Dictionary<string, object> model = new Dictionary<string, object>();
+        //     City city = City.Find(cityId);
+        //     model.Add("city", city);
+        //     model.Add("flight", flight);
+        //     return View("Show", model);
+        // }
 
     }
 }

@@ -5,11 +5,13 @@
 <div class="container">
 <h1>Flight Details: </h1>
 
-<h2>@Model["flight"].GetFlightName()</h2>
-<h3>City: @Model["city"].GetName()</h3>
+<h2>Flight Number: @Model.GetFlightNumber()</h2>
+<h3>Departure Time: @Model.GetDepartureTime()</h3>
+<h3>Arrival Time: @Model.GetArrivalTime()</h3>
+<h3>Airline: @Model.GetAirline()</h3>
+<h3>Status: @Model.GetStatus()</h3><br><br>
 
-<a href='/cities/@Model["city"].GetId()/flights/@Model["flight"].GetId()/edit'>Edit this Item</a>
-<a href='/cities/@Model["city"].GetId()/flights/new'>Add another flight</a>
-<a href='/cities'>View all cities</a>
+<h3><a href='/flights'>View flights</a></h3>
+
 
 </div>

@@ -360,7 +360,7 @@ namespace Airline.Models
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"UPDATE flightd SET flight_number = @newFlightNumber, departure_time = @newDepartureTime, arrival_time = @newArrivalTime, airline = @newAirline, status = @newStatus   WHERE id = @searchId;";
+            cmd.CommandText = @"UPDATE flights SET flight_number = @newFlightNumber, departure_time = @newDepartureTime, arrival_time = @newArrivalTime, airline = @newAirline, status = @newStatus   WHERE id = @searchId;";
             MySqlParameter searchId = new MySqlParameter();
             searchId.ParameterName = "@searchId";
             searchId.Value = _id;

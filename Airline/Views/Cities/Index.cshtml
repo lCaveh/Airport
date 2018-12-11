@@ -12,7 +12,7 @@
 
     @foreach (var city in Model)
     {
-    <h3>@city.GetName()</h3>
+    <h3><a href="/cities/@city.GetId()">@city.GetName()</a></h3>
     }
 
     <p><a href='/flights/new'>Add a new flight</a></p>
