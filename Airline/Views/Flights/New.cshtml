@@ -1,0 +1,46 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+<h1>Add a new flight </h1>
+
+<form action='/flights' method='post'>
+
+  <label for='flightNumber'>Flight Number: </label>
+  <input id='flightNumber' name='flightNumber' type='text'> <br>
+  <label for='departureTime'>Departure Time: </label>
+  <input id='departureTime' name='departureTime' type='datetime-local'> <br>
+  <label for='arrivalTime'>Arrival Time: </label>
+  <input id='arrivalTime' name='arrivalTime' type='datetime-local'> <br>
+  <label for='airline'>Airline: </label>
+  <input id='airline' name='airline' type='text'> <br>
+  <label for='status'>Status: </label>
+  <input id='status' name='status' type='text'>
+    <br>
+  <label for="departureCity">Departure City</label>
+  <select id="departureCity" name="departureCity">
+  @foreach (var city in Model)
+  {
+    <option value=@city.GetId()>@city.GetName()</option>
+  }
+  
+
+</select>
+ <br>
+<label for="arrivalCity">Arrival City</label>
+  <select id="arrivalCity" name="arrivalCity">
+  @foreach (var city in Model)
+  {
+    <option value=@city.GetId()>@city.GetName()</option>
+  }
+  
+
+</select>
+ <br>
+  <button type='submit'>Add Flight</button>
+</form>
+<p><a href="/">Back home</a></p>
+<p><a href="/cities">Back to cities.</a></p>
+
+</div>

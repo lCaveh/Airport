@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+<h1>Flight Details: </h1>
+
+<h2>@Model["flight"].GetFlightName()</h2>
+<h3>City: @Model["city"].GetName()</h3>
+
+<a href='/cities/@Model["city"].GetId()/flights/@Model["flight"].GetId()/edit'>Edit this Item</a>
+<a href='/cities/@Model["city"].GetId()/flights/new'>Add another flight</a>
+<a href='/cities'>View all cities</a>
+
+</div>

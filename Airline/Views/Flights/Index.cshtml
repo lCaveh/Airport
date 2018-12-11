@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+    <h1>Flights</h1>
+
+    @if (@Model.Count == 0)
+    {
+    <h3>No flights have been added yet!</h3>
+    }
+
+    @foreach (var flight in Model)
+    {
+    <h2>@flight.GetFlightNumber()</h2>
+    <h3>@flight.GetAirline()</h3>
+    <h3>@flight.GetArrivalTime()</h3>
+    <br>
+    <a href="/flights/@flight.GetId()/delete">Delete</a><br>
+    <a href="/flights/@flight.GetId()/edit">Edit</a>
+    }
+
+    <p><a href='/flights/new'>Add a new flight</a></p>
+    <p><a href='/'>Back home</a></p>
+</div>
